@@ -1,25 +1,26 @@
-with open(r'C:\Users\Nazneen\git\madlibs-generator\story.txt', "r") as file:
-    # content = file.read()
-    # print(content)
-   collection=[]    
+with open(r'madlibs-generator\story.txt', "r") as file:
+   story= file.read()
+   collection=[]
+  
 
 
-   for line in file.readlines():
-          words=line.split()
-          for word in words:
+   words=story.split()
+   for word in words:
              if word.startswith('<'):
                 collection.append(word)
-   print(collection)
-         
-
    
-    
-    
-
-
-
-
-        
-
-
-    
+   new=[]
+   for i in range(len(collection)):
+           new_input=input(f"Enter a word for {collection[i]}:")
+           new.append(new_input)
+   
+   
+   for i in range(len(collection)):
+         story=story.replace(collection[i],new[i])
+         
+with open(r'madlibs-generator\story.txt','w') as file:
+          file.write(story)
+with open(r'madlibs-generator\story.txt', 'r') as file:
+    updated_story = file.read()
+   
+    print(updated_story)
